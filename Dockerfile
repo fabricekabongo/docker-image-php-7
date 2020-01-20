@@ -1,5 +1,6 @@
 FROM ubuntu:xenial
 
+RUN apt-add-repository --yes --update ppa:ansible/ansible
 RUN apt-get update && apt-get install -y unattended-upgrades \
     git \
     ntp \
@@ -7,7 +8,9 @@ RUN apt-get update && apt-get install -y unattended-upgrades \
     libpcre3 \
     software-properties-common \
     make \
-    unzip
+    unzip \
+    python3 \
+    ansible
 
 RUN service ntp start
 RUN a2enmod rewrite headers
