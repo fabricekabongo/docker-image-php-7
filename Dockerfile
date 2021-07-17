@@ -37,6 +37,19 @@ RUN apt-get install wget && wget http://pear.php.net/go-pear.phar \
 
 RUN pecl install opencensus-alpha apcu
 
+RUN wget http://in.archive.ubuntu.com/ubuntu/ubuntu/pool/universe/libr/librabbitmq/librabbitmq1_0.5.2-2_amd64.deb
+RUN dpkg -i librabbitmq1_0.5.2-2_amd64.deb
+
+RUN wget http://in.archive.ubuntu.com/ubuntu/ubuntu/pool/universe/libr/librabbitmq/librabbitmq-dev_0.5.2-2_amd64.deb
+RUN dpkg -i librabbitmq-dev_0.5.2-2_amd64.deb
+
+RUN apt-get install php7.0 php7.0-mbstring php7.0-mcrypt php7.0-mysql php7.0-xml php7.0-dev
+
+RUN pecl install amqp
+
+RUN echo "extension=amqp.so" >> /etc/php/7.4/apache2/php.ini
+RUN echo "extension=amqp.so" >> /etc/php/7.4/cli/php.ini
+
 COPY ./apache2/vhost.conf /etc/apache2/sites-enabled/000-default.conf
 
 COPY php/custom.ini /etc/php/7.4/apache2/php.ini
