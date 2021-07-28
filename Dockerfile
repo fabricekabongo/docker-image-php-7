@@ -9,9 +9,6 @@ RUN apt-get update && apt-get install -y unattended-upgrades \
     make \
     unzip \
     python3
-    
-RUN apt-add-repository --yes --update ppa:ansible/ansible
-RUN apt-get update && apt-get install -y ansible
 
 RUN service ntp start
 RUN a2enmod rewrite headers
