@@ -39,8 +39,8 @@ RUN apt-get install wget && wget https://pear.php.net/go-pear.phar \
 
 RUN pecl install opencensus-alpha apcu
 
-RUN echo "extension=amqp.so" >> /etc/php/7.4/apache2/php.ini
-RUN echo "extension=amqp.so" >> /etc/php/7.4/cli/php.ini
+RUN echo "extension=amqp.so" >> /etc/php/7.3/apache2/php.ini
+RUN echo "extension=amqp.so" >> /etc/php/7.3/cli/php.ini
 
 COPY ./apache2/vhost.conf /etc/apache2/sites-enabled/000-default.conf
 
